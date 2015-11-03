@@ -1,0 +1,178 @@
+
+package com.projet.DAO.implementation;
+import java.sql.Connection;
+import java.util.List;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.LinkedList;
+import com.projet.DAO.DAO;
+import com.projet.classe.User;
+
+public class UserDAO extends DAO<User>{
+
+	public UserDAO(Connection c) {
+		super(c);
+	}
+
+	@Override
+	public boolean create(User x) {
+		String req = "INSERT INTO membre (`nom` , `motDePasse` , `courriel`) "+
+				"VALUES ('"+x.getIdUser()+"','"+x.getMotDePasse()+"','"+x.getEtat()+"')";
+		Statement stm = null;
+		try 
+		{
+			stm = cnx.createStatement(); 
+			int n= stm.executeUpdate(req);
+			if (n>0)
+			{
+				stm.close();
+				return true;
+			}
+		}
+		catch (SQLException exp)
+		{
+		}
+		finally
+		{
+			if (stm!=null)
+			try {
+				stm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		}
+		return false;
+	}
+
+	public User read(int id)
+	{		
+		return this.readID(""+id);
+	}
+
+	public User readID(String id) 
+	{
+            try 
+            {
+                Statement stm = cnx.createStatement(); 
+                ResultSet r = stm.executeQuery("SELECT * FROM user WHERE id = '"+id+"'");
+                if (r.next())
+                {
+                       User u = new User(r.getString("idUser"));
+                        r.close();
+                        stm.close();
+                        return u;
+                }
+            }
+            catch (SQLException exp)
+            {
+            }
+            return null;
+	}
+        
+
+	@Override
+	public boolean update(User x) {
+		Statement stm = null;
+		try 
+		{
+			String req = "UPDATE user SET id = '"+x.getNom()+"', motDePasse = '"+x.getMotDePasse()+"', prenom = '"+x.getPrenom()+"'" +
+							" WHERE idUser = '"+x.getIdUser()+"'";		
+			stm = cnx.createStatement(); 
+			int n= stm.executeUpdate(req);
+			if (n>0)
+			{
+				stm.close();
+				return true;
+			}
+		}
+		catch (SQLException exp)
+		{
+		}
+		finally
+		{
+			if (stm!=null)
+			try {
+				stm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		}
+		return false;
+	}
+
+        //ON ne peut pas delete de user dans notre projet 
+/*        
+	@Override
+	public boolean delete(Membre x) 
+	{
+		{Statement stm = null;
+		try 
+		{
+			stm = cnx.createStatement(); 
+			int n= stm.executeUpdate("DELETE FROM catalogue WHERE numero='"+x.getNumero()+"'");
+			if (n>0)
+			{
+				stm.close();
+				return true;
+			}
+		}
+		catch (SQLException exp)
+		{
+		}
+		finally
+		{
+			if (stm!=null)
+			try {
+				stm.close();
+			} catch (SQLException e) 
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		}
+		return false;
+	}
+}*/
+
+	@Override
+	public List<User> findAll() 
+	{
+		List<User> liste = new LinkedList<User>();
+		try 
+		{
+			Statement stm = cnx.createStatement(); 
+			ResultSet r = stm.executeQuery("SELECT * FROM user");
+			while (r.next())
+			{
+				User c = new User(r.getString("idUser"),
+						r.getString("nom"),
+                                                r.getString("etat"),
+						r.getString("prenom"));
+                                
+				liste.add(c);
+			}
+			r.close();
+			stm.close();
+		}
+		catch (SQLException exp)
+		{
+		}
+		return liste;
+		}
+
+
+
+    @Override
+    public boolean delete(User x) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+
+   
+	}
+
+
