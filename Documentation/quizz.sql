@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.4
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Mar 15 Septembre 2015 à 16:42
--- Version du serveur :  5.6.15-log
--- Version de PHP :  5.5.8
+-- Client :  localhost
+-- Généré le :  Ven 06 Novembre 2015 à 15:42
+-- Version du serveur :  5.6.20-log
+-- Version de PHP :  5.4.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,50 +23,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `administrateur`
---
-
-CREATE TABLE IF NOT EXISTS `administrateur` (
-  `NomUser` varchar(25) NOT NULL,
-  `MotPasse` varchar(25) NOT NULL,
-  PRIMARY KEY (`NomUser`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `cours`
 --
 
 CREATE TABLE IF NOT EXISTS `cours` (
   `NoCours` varchar(15) NOT NULL,
   `NoProf` varchar(25) NOT NULL,
-  `NoDa` varchar(25) NOT NULL,
-  PRIMARY KEY (`NoCours`)
+  `NoDa` varchar(25) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `etudiant`
+-- Structure de la table `question`
 --
 
-CREATE TABLE IF NOT EXISTS `etudiant` (
-  `NoDa` varchar(25) NOT NULL,
-  `MotPasse` varchar(25) NOT NULL,
-  PRIMARY KEY (`NoDa`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `professeur`
---
-
-CREATE TABLE IF NOT EXISTS `professeur` (
-  `NumeroEmploye` varchar(25) NOT NULL,
-  `MotPasse` varchar(25) NOT NULL,
-  PRIMARY KEY (`NumeroEmploye`)
+CREATE TABLE IF NOT EXISTS `question` (
+  `idQuestion` int(11) NOT NULL,
+  `Question` text NOT NULL,
+  `Reponse` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -77,11 +52,12 @@ CREATE TABLE IF NOT EXISTS `professeur` (
 
 CREATE TABLE IF NOT EXISTS `quizz` (
   `IdQuizz` varchar(25) NOT NULL,
-  `NoProfesseur` varchar(25) NOT NULL,
-  `NoCours` varchar(25) NOT NULL,
+  `idQuestion` int(11) NOT NULL,
+  `IdUser` varchar(25) NOT NULL,
+  `IdCours` varchar(25) NOT NULL,
   `nombreEssais` int(11) NOT NULL,
   `nombreFautes` int(11) NOT NULL,
-  PRIMARY KEY (`IdQuizz`)
+  `Createur` varchar(25) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -94,12 +70,11 @@ CREATE TABLE IF NOT EXISTS `ungroupe` (
   `IdGroupe` varchar(25) NOT NULL,
   `moyenneGroupe` double NOT NULL,
   `noteEtudiant` double NOT NULL,
-  `Ecart-Type` double NOT NULL,
-  `IdEtudiant` varchar(25) NOT NULL,
+  `EcartType` double NOT NULL,
+  `IdUser` varchar(25) NOT NULL,
   `IdCours` varchar(25) NOT NULL,
   `Mediane` double NOT NULL,
-  `TailleMax` int(11) NOT NULL,
-  PRIMARY KEY (`IdGroupe`)
+  `TailleMax` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -109,11 +84,44 @@ CREATE TABLE IF NOT EXISTS `ungroupe` (
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `NomUtilisateur` varchar(25) NOT NULL,
+  `id` varchar(25) NOT NULL,
   `Password` varchar(25) NOT NULL,
-  `DroitUtilisation` varchar(35) NOT NULL,
-  PRIMARY KEY (`NomUtilisateur`)
+  `etat` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `cours`
+--
+ALTER TABLE `cours`
+ ADD PRIMARY KEY (`NoCours`);
+
+--
+-- Index pour la table `question`
+--
+ALTER TABLE `question`
+ ADD PRIMARY KEY (`idQuestion`);
+
+--
+-- Index pour la table `quizz`
+--
+ALTER TABLE `quizz`
+ ADD PRIMARY KEY (`IdQuizz`);
+
+--
+-- Index pour la table `ungroupe`
+--
+ALTER TABLE `ungroupe`
+ ADD PRIMARY KEY (`IdGroupe`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+ ADD PRIMARY KEY (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
