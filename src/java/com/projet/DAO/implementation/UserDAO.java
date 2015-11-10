@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import com.projet.DAO.DAO;
 import com.projet.classe.User;
+import java.sql.PreparedStatement;
 
 public class UserDAO extends DAO<User>{
 
@@ -17,7 +18,7 @@ public class UserDAO extends DAO<User>{
 
 	@Override
 	public boolean create(User x) {
-		String req = "INSERT INTO membre (`nom` , `motDePasse` , `courriel`) "+
+		String req = "INSERT INTO user (`idUser` , `motDePasse` , `etat`) "+
 				"VALUES ('"+x.getIdUser()+"','"+x.getMotDePasse()+"','"+x.getEtat()+"')";
 		Statement stm = null;
 		try 
@@ -50,6 +51,41 @@ public class UserDAO extends DAO<User>{
 	{		
 		return this.readID(""+id);
 	}
+        
+        public User read(String id) {
+        PreparedStatement stm = null;
+        try {
+//            Statement stm = cnx.createStatement();
+//            ResultSet r = stm.executeQuery("SELECT * FROM user WHERE numId = '" + id + "'");
+            //Avec requête paramétrée :
+            stm = cnx.prepareStatement("SELECT * FROM user WHERE idUser = ?");
+            stm.setString(1,id);
+            ResultSet r = stm.executeQuery();
+            if (r.next()) {
+                //User c = new User(r.getString("numId"),r.getString("mdp"));
+                User c = new User();
+                c.setIdUser(r.getString("idUser"));
+                c.setMotDePasse(r.getString("motDePasse"));
+                c.setEtat(r.getString("etat"));
+               // c.setNom(r.getString("prenom"));
+               // c.setNom(r.getString("nom"));
+                r.close();
+                stm.close();
+                return c;
+            }
+        } catch (SQLException exp) {
+        } finally {
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
 
 	public User readID(String id) 
 	{
@@ -148,9 +184,9 @@ public class UserDAO extends DAO<User>{
 			while (r.next())
 			{
 				User c = new User(r.getString("idUser"),
-						r.getString("nom"),
-                                                r.getString("etat"),
-						r.getString("prenom"));
+						r.getString("motDePasse"),
+                                                r.getString("etat"));
+						//r.getString("prenom"));
                                 
 				liste.add(c);
 			}

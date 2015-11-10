@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <context-param>
+        <description>le lien du pilote</description>
+        <param-name>pilotejdbc</param-name>
+        <param-value>com.mysql.jdbc.Driver</param-value>
+    </context-param>
+    <context-param>
+        <description>le lien de la base de données</description>
+        <param-name>urlBd</param-name>
+        <param-value>jdbc:mysql://localhost/quizz?user=root&amp;password=root</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>com.projet.servlets.logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>login</servlet-name>
+        <servlet-class>com.projet.servlets.login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>controleurFrontal</servlet-name>
+        <servlet-class>com.projet.servlets.controleurFrontal</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controleurFrontal</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>

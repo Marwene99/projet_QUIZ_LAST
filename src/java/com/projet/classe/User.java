@@ -6,21 +6,24 @@ public class User
 
 	
 	//constructeurs
+     public User() {
+      
+     }
 
-
-    public User(String idUser, String motDePasse, String etat, String nom, String prenom) {
+   /* public User(String idUser, String motDePasse, String etat, String nom, String prenom) {
         this.idUser = idUser;
-       // this.motDePasse = motDePasse;
+        this.motDePasse = motDePasse;
         this.etat = etat;
         this.nom = nom;
         this.prenom = prenom;
-    }
+    }*/
 
-    public User(String idUser, String etat, String nom, String prenom) {
+    public User(String idUser, String etat, String motDePasse ) {
         this.idUser = idUser;
         this.etat = etat;
-        this.nom = nom;
-        this.prenom = prenom;
+        this.motDePasse = motDePasse;
+       // this.nom = nom;
+       // this.prenom = prenom;
     }
         
         

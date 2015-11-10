@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 2015-11-03, 10:44:52
+    Document   : accueil
+    Created on : 2015-11-10, 11:35:01
     Author     : usager
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Page Fack you!</h1>
     </body>
 </html>
