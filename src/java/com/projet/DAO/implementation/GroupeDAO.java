@@ -7,19 +7,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 import com.projet.DAO.DAO;
-import com.projet.classe.Question ;
-public class QuestionDAO extends DAO<Question>{
+import com.projet.classe.Groupe ;
+public class GroupeDAO extends DAO<Groupe>{
 
-	public QuestionDAO(Connection c) {
+	public GroupeDAO(Connection c) {
 		super(c);
 	}
 
 	@Override
-	public boolean create(Question x) {
-
-		String req = "INSERT INTO question (`idQuestion` , `texteQuestion` , `reponse`) "+
-
-				"VALUES ('"+x.getIdQuestion()+"','"+x.getTxtQuestion()+"','"+x.getReponse()+"')";
+	public boolean create(Groupe x) {
+		String req = "INSERT INTO ungroupe (`IdGroupe` , `moyenneGroupe` , `noteEtudiant`,`EcartType`,`idUser`,`IdCours`,`Mediane`,`TailleMax`) "+
+				"VALUES ('"+x.getIdGroupe()+"','"+x.getMoyenneGroupe()+"','"+x.getNoteEtudiant()+"',"+x.getEcartType()+"',"+x.getIdUser()+"',"+x.getIdCours()+"',"+x.getMedianne()+"'"+x.getTailleMax()+"',";
 		Statement stm = null;
 		try 
 		{
@@ -47,22 +45,28 @@ public class QuestionDAO extends DAO<Question>{
 		return false;
 	}
 
-	public Question read(int id)
+	public Groupe read(int id)
 	{		
 		return this.readID(""+id);
 	}
 
-	public Question readID(String id) 
+	public Groupe readID(String id) 
 	{
             try 
             {
                 Statement stm = cnx.createStatement(); 
-                ResultSet r = stm.executeQuery("SELECT * FROM question WHERE id = '"+id+"'");
+                ResultSet r = stm.executeQuery("SELECT * FROM ungroupe WHERE IdGroupe = '"+id+"'");
                 if (r.next())
+
                 {
-                       Question u = new Question(r.getString("idQuestion"),
-                                                 r.getString("texteQuestion"),
-                                                 r.getString("reponse"));
+                       Groupe u = new Groupe(r.getString("IdGroupe"),
+                                                r.getString("IdUser"),
+                                                 r.getString("IdCours"),
+                                                 r.getDouble("moyenneGroupe"),
+                                                 r.getDouble("noteEtudiant"),
+                                                 r.getDouble("EcartType"),
+                                                 r.getDouble("Mediane"),
+                                                 r.getInt("TailleMax"));
                         r.close();
                         stm.close();
                         return u;
@@ -74,14 +78,15 @@ public class QuestionDAO extends DAO<Question>{
             return null;
 	}
         
-
+ 
+        
 	@Override
-	public boolean update(Question x) {
+	public boolean update(Groupe x) {
 		Statement stm = null;
 		try 
 		{
-			String req = "UPDATE question SET  texteQuestion = '"+x.getTxtQuestion()+"', reponse = '"+x.getReponse() +
-							" WHERE idQuestion = '"+x.getIdQuestion()+"'";		
+			String req = "UPDATE ungroupe SET  moyenneGroupe = '"+x.getMoyenneGroupe()+"', noteEtudiant = '"+x.getNoteEtudiant()+"', EcartType = '"+x.getEcartType()+"', Mediane = '"+x.getMedianne()+
+							" WHERE IdGroupe = '"+x.getIdGroupe()+"'";		
 			stm = cnx.createStatement(); 
 			int n= stm.executeUpdate(req);
 			if (n>0)
@@ -106,8 +111,8 @@ public class QuestionDAO extends DAO<Question>{
 		return false;
 	}
 
-        //ON ne peut pas delete de user dans notre projet 
-/*        
+        //ON ne peut pas delete de groupe dans notre projet 
+/*      
 	@Override
 	public boolean delete(Membre x) 
 	{
@@ -141,18 +146,23 @@ public class QuestionDAO extends DAO<Question>{
 }*/
 
 	@Override
-	public List<Question> findAll() 
+	public List<Groupe> findAll() 
 	{
-		List<Question> liste = new LinkedList<Question>();
+		List<Groupe> liste = new LinkedList<Groupe>();
 		try 
 		{
 			Statement stm = cnx.createStatement(); 
-			ResultSet r = stm.executeQuery("SELECT * FROM question");
+			ResultSet r = stm.executeQuery("SELECT * FROM ungroupe");
 			while (r.next())
 			{
-				Question c = new Question(r.getString("idQuestion"),
-						r.getString("texteQuestion"),
-                                                r.getString("reponse"));
+				Groupe c = new Groupe(r.getString("IdGroupe"),
+                                                r.getString("IdUser"),
+                                                 r.getString("IdCours"),
+                                                 r.getDouble("moyenneGroupe"),
+                                                 r.getDouble("noteEtudiant"),
+                                                 r.getDouble("EcartType"),
+                                                 r.getDouble("Mediane"),
+                                                 r.getInt("TailleMax"));
                                 
 				liste.add(c);
 			}
@@ -168,7 +178,7 @@ public class QuestionDAO extends DAO<Question>{
 
 
     @Override
-    public boolean delete(Question x) {
+    public boolean delete(Groupe x) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

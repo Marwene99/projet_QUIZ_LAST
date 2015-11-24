@@ -7,19 +7,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 import com.projet.DAO.DAO;
-import com.projet.classe.Question ;
-public class QuestionDAO extends DAO<Question>{
+import com.projet.classe.Quiz ;
+public class QuizDAO extends DAO<Quiz>{
 
-	public QuestionDAO(Connection c) {
+	public QuizDAO(Connection c) {
 		super(c);
 	}
 
 	@Override
-	public boolean create(Question x) {
-
-		String req = "INSERT INTO question (`idQuestion` , `texteQuestion` , `reponse`) "+
-
-				"VALUES ('"+x.getIdQuestion()+"','"+x.getTxtQuestion()+"','"+x.getReponse()+"')";
+	public boolean create(Quiz x) {
+		String req = "INSERT INTO quizz (`IdQuizz` , `idQuestion` , `IdUser,IdCours,nombreEssais,nombreFautes`) "+
+				"VALUES ('"+x.getId()+"','"+x.getIdQuestion()+"','"+x.getIdUser()+"',"+x.getIdCours()+",'"+x.getNbEssais()+"',"+x.getNbFautes()+"')";
 		Statement stm = null;
 		try 
 		{
@@ -47,22 +45,25 @@ public class QuestionDAO extends DAO<Question>{
 		return false;
 	}
 
-	public Question read(int id)
+	public Quiz read(int id)
 	{		
 		return this.readID(""+id);
 	}
 
-	public Question readID(String id) 
+	public Quiz readID(String id) 
 	{
             try 
             {
                 Statement stm = cnx.createStatement(); 
-                ResultSet r = stm.executeQuery("SELECT * FROM question WHERE id = '"+id+"'");
+                ResultSet r = stm.executeQuery("SELECT * FROM quizz WHERE IdQuizz = '"+id+"'");
                 if (r.next())
                 {
-                       Question u = new Question(r.getString("idQuestion"),
-                                                 r.getString("texteQuestion"),
-                                                 r.getString("reponse"));
+                       Quiz u = new Quiz(r.getString("IdQuizz"),
+                                                 r.getString("idQuestion"),
+                                                 r.getString("IdUser"),
+                                                 r.getString("IdCours"),
+                                                 r.getInt("nombreEssais"),
+                                                 r.getInt("nombreFautes"));
                         r.close();
                         stm.close();
                         return u;
@@ -76,12 +77,12 @@ public class QuestionDAO extends DAO<Question>{
         
 
 	@Override
-	public boolean update(Question x) {
+	public boolean update(Quiz x) {
 		Statement stm = null;
 		try 
 		{
-			String req = "UPDATE question SET  texteQuestion = '"+x.getTxtQuestion()+"', reponse = '"+x.getReponse() +
-							" WHERE idQuestion = '"+x.getIdQuestion()+"'";		
+			String req = "UPDATE quizz SET  nombreEssais = '"+x.getNbEssais()+"', nombreFautes = '"+x.getNbFautes() +
+							" WHERE IdQuizz = '"+x.getId()+"'";		
 			stm = cnx.createStatement(); 
 			int n= stm.executeUpdate(req);
 			if (n>0)
@@ -141,18 +142,21 @@ public class QuestionDAO extends DAO<Question>{
 }*/
 
 	@Override
-	public List<Question> findAll() 
+	public List<Quiz> findAll() 
 	{
-		List<Question> liste = new LinkedList<Question>();
+		List<Quiz> liste = new LinkedList<Quiz>();
 		try 
 		{
 			Statement stm = cnx.createStatement(); 
-			ResultSet r = stm.executeQuery("SELECT * FROM question");
+			ResultSet r = stm.executeQuery("SELECT * FROM quizz");
 			while (r.next())
 			{
-				Question c = new Question(r.getString("idQuestion"),
-						r.getString("texteQuestion"),
-                                                r.getString("reponse"));
+				Quiz c = new Quiz(r.getString("IdQuizz"),
+                                                 r.getString("idQuestion"),
+                                                 r.getString("IdUser"),
+                                                 r.getString("IdCours"),
+                                                 r.getInt("nombreEssais"),
+                                                 r.getInt("nombreFautes"));
                                 
 				liste.add(c);
 			}
@@ -168,7 +172,7 @@ public class QuestionDAO extends DAO<Question>{
 
 
     @Override
-    public boolean delete(Question x) {
+    public boolean delete(Quiz x) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

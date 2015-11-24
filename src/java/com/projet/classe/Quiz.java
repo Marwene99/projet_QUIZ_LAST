@@ -9,17 +9,18 @@ package com.projet.classe;
 
 public class Quiz 
 {
-	private String  id, idQuestion, idProf, idCours;
+
+	private String  id, idQuestion, idUser, idCours;
         private int nbEssais, nbFautes;
 
 	
 	//constructeurs
-	public Quiz(String id, String idQuestion, String idProf, String idCours)
+	public Quiz(String id, String idQuestion, String idUser, String idCours,int nbEssais ,int nbFautes)
 	{
 
 		this.id = id;
 		this.idQuestion = idQuestion;  
-                this.idProf = idProf;  
+                this.idUser = idUser;  
                 this.idCours = idCours;  
                   this.nbEssais = nbEssais;  
                     this.nbFautes = nbFautes;  
@@ -44,12 +45,12 @@ public class Quiz
         this.idQuestion = idQuestion;
     }
 
-    public String getIdProf() {
-        return idProf;
+    public String getIdUser() {
+        return idUser;
     }
 
-    public void setIdProf(String idProf) {
-        this.idProf = idProf;
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 
     public String getIdCours() {
