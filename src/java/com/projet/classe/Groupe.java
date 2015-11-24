@@ -9,10 +9,13 @@ package com.projet.classe;
  *
  * @author usager
  */
+
 public class Groupe {
     private String idGroupe,idUser,IdCours;
     private double moyenneGroupe, noteEtudiant, ecartType,medianne;
     private int tailleMax;
+        
+    public Groupe(){}
 
     public Groupe(String idGroupe, String idUser, String IdCours, double moyenneGroupe, double noteEtudiant, double ecartType, double medianne, int tailleMax) {
         this.idGroupe = idGroupe;

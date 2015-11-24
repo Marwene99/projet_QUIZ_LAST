@@ -14,6 +14,8 @@ public class Cours {
     
     private String idCours, idProf,idDa;
 
+    public Cours(){} // contructuer pas de parametre
+    
     public Cours(String idCours, String idProf, String idDa) {
         this.idCours = idCours;
         this.idProf = idProf;
