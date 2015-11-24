@@ -149,9 +149,9 @@ public class CoursDAO extends DAO<Cours>{
 			ResultSet r = stm.executeQuery("SELECT * FROM cours");
 			while (r.next())
 			{
-				Cours c = new Cours(r.getString("idCours"),
-						r.getString("idProf"),
-                                                r.getString("idDa"));
+				Cours c = new Cours(r.getString("NoCours"),
+						r.getString("NoProf"),
+                                                r.getString("NoDa"));
                                 
 				liste.add(c);
 			}

@@ -11,7 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+
     <body>
-        <h1>Page Fack you!</h1>
+        <h1>AJOUTER DU COMTENUE TEL QUE DES IMAGE DANS CETTE PAGE (ACCUEILL.JSP)</h1>
     </body>
 </html>

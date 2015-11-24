@@ -40,6 +40,14 @@ public class controleurFrontal extends HttpServlet {
             RequestDispatcher r = this.getServletContext().getRequestDispatcher("/logout");
             r.forward(request, response);
         }
+           if ("afficherCours".equals(action)){
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/ListeCours");
+            r.forward(request, response);
+        }
+           if ("consulterUnGroupe".equals(action)){
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/ListeGroupe");
+            r.forward(request, response);
+        }
                
     }
 

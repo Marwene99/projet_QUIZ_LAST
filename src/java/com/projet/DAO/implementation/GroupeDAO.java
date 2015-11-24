@@ -174,8 +174,34 @@ public class GroupeDAO extends DAO<Groupe>{
 		}
 		return liste;
 		}
-
-
+        
+      public List<Groupe> findAllbyIdCours( String idcours) {
+        List<Groupe> liste = new LinkedList<Groupe>();
+        try{
+        Statement stm = cnx.createStatement(); 
+	ResultSet r = stm.executeQuery("SELECT * FROM ungroupe where idCours='"+idcours+"'");
+        while (r.next())
+			{
+				Groupe c = new Groupe(r.getString("IdGroupe"),
+                                                r.getString("IdUser"),
+                                                 r.getString("IdCours"),
+                                                 r.getDouble("moyenneGroupe"),
+                                                 r.getDouble("noteEtudiant"),
+                                                 r.getDouble("EcartType"),
+                                                 r.getDouble("Mediane"),
+                                                 r.getInt("TailleMax"));
+                                
+				liste.add(c);
+			}
+			r.close();
+			stm.close();
+        }
+        catch (SQLException exp) {
+            
+        }
+       return liste ;
+      
+      }
 
     @Override
     public boolean delete(Groupe x) {

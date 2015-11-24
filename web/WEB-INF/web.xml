@@ -22,6 +22,14 @@
         <servlet-name>controleurFrontal</servlet-name>
         <servlet-class>com.projet.servlets.controleurFrontal</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListeGroupe</servlet-name>
+        <servlet-class>com.projet.servlets.ListeGroupe</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListeCours</servlet-name>
+        <servlet-class>com.projet.servlets.ListeCours</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -33,6 +41,14 @@
     <servlet-mapping>
         <servlet-name>controleurFrontal</servlet-name>
         <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListeGroupe</servlet-name>
+        <url-pattern>/ListeGroupe</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListeCours</servlet-name>
+        <url-pattern>/ListeCours</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

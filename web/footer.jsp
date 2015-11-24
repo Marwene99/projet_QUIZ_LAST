@@ -10,14 +10,10 @@
 
 </head>
 <body>
-<div id="footer">
-<img src = "image/Capture.png" />
-<img src = "image/linked in.png" />
-<img src = "image/twitter.png" />
-<img src = "image/youtube.png" />
-<img src = "image/google.png" /><br>
-Tous droits r&eacute;serv&eacute;s<br>
-Concu par Ali Joudad , M&eacute;dard Jonathas , Marwene Turki ,Bari Taziev <br>
+
+      <div id="footer" class="panel-footer   navbar-fixed-bottom">
+                <p> &copy; 2015 <a href="#">Quiz pas de ZZ</a>, Tous les droits reservés &reg;</p>
+       </div> <!-- /footer -->
 </div>
 </body>
 </html>

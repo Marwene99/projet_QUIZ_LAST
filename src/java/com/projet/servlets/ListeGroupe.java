@@ -5,8 +5,8 @@
  */
 package com.projet.servlets;
 
-import com.projet.DAO.implementation.CoursDAO;
-import com.projet.classe.Cours;
+import com.projet.DAO.implementation.GroupeDAO;
+import com.projet.classe.Groupe;
 import com.projet.connexion.Connexion;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author usager
  */
-public class ListeCours extends HttpServlet {
+public class ListeGroupe extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,19 +36,19 @@ public class ListeCours extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String id = request.getParameter("idCours");
         HttpSession Session = request.getSession();
-       
-        Connexion.setUrl(this.getServletContext().getInitParameter("urlDb"));
-        List<Cours> listeC = new LinkedList<Cours>();
-        CoursDAO cDAO = new CoursDAO(Connexion.getInstance()); 
-        listeC = cDAO.findAll();
-        Session.setAttribute("listeC", listeC);
-       //redirection ? 
-        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp?actionPage=afficherCours");        
-        r.forward(request, response);
         
-        }
-    
+        Connexion.setUrl(this.getServletContext().getInitParameter("urlDb"));
+        List<Groupe> listeG = new LinkedList<Groupe>();
+        GroupeDAO gDAO = new GroupeDAO(Connexion.getInstance()); 
+        listeG = gDAO.findAllbyIdCours(id);
+        Session.setAttribute("listeG", listeG);
+       //redirection ? 
+        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp?actionPage=afficherGroupe");        
+        r.forward(request, response);
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
