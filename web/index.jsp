@@ -19,7 +19,9 @@
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
          <meta name="viewport" content="width=device-width, initial-scale=1">
          <link href="css/bootstrap.min.css" rel="stylesheet">
+         <link href="css/style.css" rel="stylesheet">
 </head>
+
 <%
     if (session.getAttribute("connecte")==null) // n'est pas connecter 
     {
@@ -28,17 +30,29 @@
 <%
     }
 %>
-
+  <jsp:include page="banner.jsp" />
 <body>
             <%
-    if (session.getAttribute("connecte")!=null) //est  connecter
-    {
+    
+    if (session.getAttribute("connecte")!=null && request.getParameter("actionPage") == null) {//est  connecter
+    
 %>
         <jsp:include page="accueil.jsp" />
-<%
-    }
-%>
+ <%
+        } if(request.getParameter("actionPage")!=null){
+          String actionPage = request.getParameter("actionPage");
 
+       if ("afficherCours".equals(actionPage)) {
+%>
+        <jsp:include page="ListeCours.jsp" />
+<%
+    } if ("afficherGroupe".equals(actionPage)) {
+ %>      
+       <jsp:include page="ListeGroupe.jsp" />
+ <%    
+        }     
+       }
+%>
 
 
 
@@ -47,8 +61,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     
-      <div id="footer" class="box">
-                <p class="f-left">&copy; 2015 <a href="#">Quiz pas de ZZ</a>, Tous les droits reservés &reg;</p>
-       </div> <!-- /footer -->
+    <jsp:include page="footer.jsp" />
     </body>
 </html>
