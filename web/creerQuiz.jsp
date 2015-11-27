@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
+<!--           modification -->
                 <h1>Formulaire de creation de question</h1>
 
       <form id="formQuestion " role="form" action="creeQuest.do" method="post">      
