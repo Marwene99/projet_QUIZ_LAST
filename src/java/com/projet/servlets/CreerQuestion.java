@@ -1,24 +1,34 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.projet.servlets;
 
+import com.projet.DAO.implementation.QuestionDAO;
+import com.projet.classe.Question;
+import com.projet.connexion.Connexion;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.LinkedList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author usager
  */
-public class controleurFrontal extends HttpServlet {
+public class CreerQuestion extends HttpServlet {
 
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -26,38 +36,31 @@ public class controleurFrontal extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                response.setContentType("text/html;charset=UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        String action = request.getParameter("action");
-         if ("login".equals(action))
-            {
-                RequestDispatcher r = this.getServletContext().getRequestDispatcher("/login");//redirection vers la servlet login
-                r.forward(request, response);     
-                return;
-            } 
-        
-        if ("logout".equals(action)){
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/logout");
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        PrintWriter out = response.getWriter();
+        try  {
+                 //Chargement du pilote :
+            Class.forName(this.getServletContext().getInitParameter("piloteJDBC"));
+        }
+            catch  (ClassNotFoundException ex) {
+            request.setAttribute("message", "Impossible de charger le pilote");
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/login.jsp");
             r.forward(request, response);
         }
-           if ("afficherCours".equals(action)){
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/ListeCours");
-            r.forward(request, response);
-        }
-           if ("consulterUnGroupe".equals(action)){
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/ListeGroupe");
-            r.forward(request, response);
-        }
-          if ("creerQuestion".equals(action)){
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/CreerQuestion");
-            r.forward(request, response);
-        } 
-               
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+          
+        Connexion.setUrl(this.getServletContext().getInitParameter("urlDb"));
+        Question q = new Question();
+        QuestionDAO daol = new QuestionDAO(Connexion.getInstance()); 
+        daol.create(q);
+        session.setAttribute("q", q);
+        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp");        
+        r.forward(request, response);
+} 
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -69,8 +72,9 @@ public class controleurFrontal extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -82,8 +86,9 @@ public class controleurFrontal extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

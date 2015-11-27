@@ -17,7 +17,9 @@ public class Question {
         this.txtQuestion = txtQuestion;
         this.reponse = reponse;
     }
-
+    public Question(){
+    
+    }
     public String getIdQuestion() {
         return idQuestion;
     }

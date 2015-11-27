@@ -53,10 +53,7 @@ public class ListeQuestion extends HttpServlet {
         List<Question> listeQ = new LinkedList<Question>();
         QuestionDAO daol = new QuestionDAO(Connexion.getInstance()); 
         listeQ = daol.findAll();
-        
         Session.setAttribute("listeQ", listeQ);
-        
-       //redirection ? 
         RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp");        
         r.forward(request, response);
        

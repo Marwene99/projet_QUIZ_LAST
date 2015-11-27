@@ -30,6 +30,10 @@
         <servlet-name>ListeCours</servlet-name>
         <servlet-class>com.projet.servlets.ListeCours</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreerQuestion</servlet-name>
+        <servlet-class>com.projet.servlets.CreerQuestion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -49,6 +53,10 @@
     <servlet-mapping>
         <servlet-name>ListeCours</servlet-name>
         <url-pattern>/ListeCours</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreerQuestion</servlet-name>
+        <url-pattern>/CreerQuestion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
