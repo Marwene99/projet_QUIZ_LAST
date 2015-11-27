@@ -17,9 +17,9 @@ public class QuestionDAO extends DAO<Question>{
 	@Override
 	public boolean create(Question x) {
 
-		String req = "INSERT INTO question (`idQuestion` , `texteQuestion` , `reponse`) "+
+		String req = "INSERT INTO question (`Question`,`Reponse`) "+
 
-				"VALUES ('"+x.getIdQuestion()+"','"+x.getTxtQuestion()+"','"+x.getReponse()+"')";
+				"VALUES ('"+x.getTxtQuestion()+"','"+x.getReponse()+"')";
 		Statement stm = null;
 		try 
 		{
@@ -80,7 +80,7 @@ public class QuestionDAO extends DAO<Question>{
 		Statement stm = null;
 		try 
 		{
-			String req = "UPDATE question SET  texteQuestion = '"+x.getTxtQuestion()+"', reponse = '"+x.getReponse() +
+			String req = "UPDATE question SET  Question = '"+x.getTxtQuestion()+"', Reponse = '"+x.getReponse() +
 							" WHERE idQuestion = '"+x.getIdQuestion()+"'";		
 			stm = cnx.createStatement(); 
 			int n= stm.executeUpdate(req);
@@ -151,8 +151,8 @@ public class QuestionDAO extends DAO<Question>{
 			while (r.next())
 			{
 				Question c = new Question(r.getString("idQuestion"),
-						r.getString("texteQuestion"),
-                                                r.getString("reponse"));
+						r.getString("Question"),
+                                                r.getString("Reponse"));
                                 
 				liste.add(c);
 			}

@@ -14,22 +14,21 @@
     <body>
         
                 <h1>Formulaire de creation de question</h1>
-    <div id="formCreerQuestion">
-      <form role="form" action="creeQuest.do" method="post">      
+
+      <form id="formQuestion " role="form" action="creeQuest.do" method="post">      
           <div class="row row-offcanvas row-offcanvas-center">
-            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">  <!--ce div permet de reduit la longeur du input-->
-                <div class="list-group">
+            <div class="col-xs-6 col-sm-3">  <!--ce div permet de reduit la longeur du input-->
                     <label for="Question" class="col-md-12 control-label">Question:</label>
-                    <input type="Question" class="form-control" id="inputEmail" placeholder="Question">
+                    <input name="Question" type="Question" class="form-control"  placeholder="Question">
+                    
                     <label for="Reponse" class="col-md-12 control-label">Reponse:</label>
-                    <input type="Reponse" class="form-control" id="inputEmail" placeholder="Reponse">
+                    <input name="Reponse" type="Reponse" class="form-control"  placeholder="Reponse">
+                    
                     <button type="submit" class="btn">Cree cette Question</button>
-                    <input type="hidden" name="action" value="creerQuestion" />
-          </div>
+                    <input type="hidden" name="action" value="creerQuestion" />   
         </div>
        </div>
     </form>
-  </div>
         <hr>
         
     </body>

@@ -34,8 +34,7 @@ public class login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String  u = request.getParameter("idUser"),
-                p = request.getParameter("motDePasse");
+        String  u = request.getParameter("idUser"), p = request.getParameter("motDePasse");
         if (u==null || u.trim().equalsIgnoreCase(""))
         {
             //Utilisateur inexistant

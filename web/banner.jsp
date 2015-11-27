@@ -16,7 +16,7 @@
    <ul class="navbar navbar-inverse navbar-nav navbar-fixed-top nav hidden-xs"  id="lg-menu"   >
     <li><a href="index.jsp"><i class="glyphicon glyphicon-paperclip"></i> Accueil</a></li>
     <li class="active"><a href='affichec.do?action=afficherCours'><i class="glyphicon glyphicon-list-alt"></i>Consulter la liste des cours</a></li>
-    <li><a href="#stories"><i class="glyphicon glyphicon-list"></i>Cree un Cours</a></li>
+    <li><a href="index.jsp?actionPage=creerQuestion"><i class="glyphicon glyphicon-list"></i>Cree un Cours</a></li>
     <li><a href="deconnecter.do?action=logout"><i class="glyphicon glyphicon-log-out"></i> Deconnecter</a></li>
 </ul>
         

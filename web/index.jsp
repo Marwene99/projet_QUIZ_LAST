@@ -50,6 +50,10 @@
  %>      
        <jsp:include page="ListeGroupe.jsp" />
  <%    
+        }if("creerQuestion".equals(actionPage)){
+            %>
+               <jsp:include page="creerQuiz.jsp" />
+<%
         }     
        }
 %>

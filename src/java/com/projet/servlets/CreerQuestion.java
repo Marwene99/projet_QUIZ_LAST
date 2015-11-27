@@ -38,23 +38,16 @@ public class CreerQuestion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        PrintWriter out = response.getWriter();
-        try  {
-                 //Chargement du pilote :
-            Class.forName(this.getServletContext().getInitParameter("piloteJDBC"));
-        }
-            catch  (ClassNotFoundException ex) {
-            request.setAttribute("message", "Impossible de charger le pilote");
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/login.jsp");
-            r.forward(request, response);
-        }
-          
+         String  question = request.getParameter("Question"), reponse = request.getParameter("Reponse");
+         
         Connexion.setUrl(this.getServletContext().getInitParameter("urlDb"));
         Question q = new Question();
+        q.setTxtQuestion(question);
+        q.setReponse(reponse);
         QuestionDAO daol = new QuestionDAO(Connexion.getInstance()); 
         daol.create(q);
         session.setAttribute("q", q);
-        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp");        
+        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp?actionPage=creerQuestion");        
         r.forward(request, response);
 } 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
