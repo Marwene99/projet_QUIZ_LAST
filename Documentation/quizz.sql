@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 06 Novembre 2015 à 15:42
+-- Généré le :  Ven 27 Novembre 2015 à 14:58
 -- Version du serveur :  5.6.20-log
 -- Version de PHP :  5.4.31
 
@@ -32,6 +32,16 @@ CREATE TABLE IF NOT EXISTS `cours` (
   `NoDa` varchar(25) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `cours`
+--
+
+INSERT INTO `cours` (`NoCours`, `NoProf`, `NoDa`) VALUES
+('420-Math', '1', '0'),
+('420-Science', '2', '0'),
+('420-Prog', '3', '0'),
+('420-Chimie', '4', '0');
+
 -- --------------------------------------------------------
 
 --
@@ -39,10 +49,17 @@ CREATE TABLE IF NOT EXISTS `cours` (
 --
 
 CREATE TABLE IF NOT EXISTS `question` (
-  `idQuestion` int(11) NOT NULL,
+`idQuestion` int(11) NOT NULL,
   `Question` text NOT NULL,
   `Reponse` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `question`
+--
+
+INSERT INTO `question` (`idQuestion`, `Question`, `Reponse`) VALUES
+(1, 'aaa', 'aaaa');
 
 -- --------------------------------------------------------
 
@@ -77,6 +94,16 @@ CREATE TABLE IF NOT EXISTS `ungroupe` (
   `TailleMax` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `ungroupe`
+--
+
+INSERT INTO `ungroupe` (`IdGroupe`, `moyenneGroupe`, `noteEtudiant`, `EcartType`, `IdUser`, `IdCours`, `Mediane`, `TailleMax`) VALUES
+('111', 0, 0, 0, 'a', '420-Math', 0, 20),
+('112', 0, 0, 0, 'a', '420-Math', 0, 18),
+('113', 0, 0, 0, 'a', '420-Math', 0, 10),
+('221', 0, 0, 0, 'a', '420-Science', 0, 25);
+
 -- --------------------------------------------------------
 
 --
@@ -84,10 +111,18 @@ CREATE TABLE IF NOT EXISTS `ungroupe` (
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` varchar(25) NOT NULL,
-  `Password` varchar(25) NOT NULL,
+  `idUser` varchar(25) NOT NULL,
+  `motDePasse` varchar(25) NOT NULL,
   `etat` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `user`
+--
+
+INSERT INTO `user` (`idUser`, `motDePasse`, `etat`) VALUES
+('a', 'a', 'Admin'),
+('ali', 'ali', 'Prof');
 
 --
 -- Index pour les tables exportées
@@ -121,8 +156,17 @@ ALTER TABLE `ungroupe`
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
- ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`idUser`);
 
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `question`
+--
+ALTER TABLE `question`
+MODIFY `idQuestion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
