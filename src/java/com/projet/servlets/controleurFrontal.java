@@ -48,7 +48,11 @@ public class controleurFrontal extends HttpServlet {
             RequestDispatcher r = this.getServletContext().getRequestDispatcher("/ListeGroupe");
             r.forward(request, response);
         }
-          if ("creerQuestion".equals(action)){
+             if ("listeQuestion".equals(action)){
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/ListeQuestion");
+            r.forward(request, response);
+        }
+          if ("CreerQuestion".equals(action)){
             RequestDispatcher r = this.getServletContext().getRequestDispatcher("/CreerQuestion");
             r.forward(request, response);
         } 

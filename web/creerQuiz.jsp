@@ -3,7 +3,7 @@
     Created on : 2015-11-27, 08:54:32
     Author     : usager
 --%>
-
+  <!-- Jai changé ici le menu deroulant -->
 <%@page import="com.projet.classe.Question"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.LinkedList"%>
@@ -40,6 +40,7 @@
         <hr>
          <h1>Formulaire de creation de Quiz</h1>
         <!-- Search box Start -->
+        
 <form>
     <div class="well carousel-search hidden-sm">
         <div class="btn-group"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">Choisir une question<span class="caret"></span></a>

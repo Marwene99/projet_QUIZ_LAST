@@ -29,6 +29,13 @@
         <jsp:forward page="login.jsp" />
 <%
     }
+    // JAI RAJOUTER ICIT, }if("listeQuestion".equals(actionPage)){
+       //      
+    //     da      <jsp:include page="creerQuiz.jsp" />
+    
+    
+    
+    
 %>
   <jsp:include page="banner.jsp" />
 <body>
@@ -54,7 +61,12 @@
             %>
                <jsp:include page="creerQuiz.jsp" />
 <%
-        }     
+        
+        }if("listeQuestion".equals(actionPage)){
+            %>
+               <jsp:include page="creerQuiz.jsp" />
+<%
+        }  
        }
 %>
 

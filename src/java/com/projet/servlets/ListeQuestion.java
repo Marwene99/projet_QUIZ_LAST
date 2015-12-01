@@ -33,13 +33,15 @@ public class ListeQuestion extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * 
+     * ICI JAI MIT EN COMMENTAIRE LE URL BD INSTANCE DE JDBC
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession Session =  request.getSession();
         PrintWriter out = response.getWriter() ;
-                try {
+             /*   try {
             //Chargement du pilote :
             Class.forName(this.getServletContext().getInitParameter("piloteJDBC"));
             
@@ -49,12 +51,13 @@ public class ListeQuestion extends HttpServlet {
             r.forward(request, response);
         }
         
-        Connexion.setUrl(this.getServletContext().getInitParameter("urlDb"));
+        Connexion.setUrl(this.getServletContext().getInitParameter("urlDb"));*/
+        
         List<Question> listeQ = new LinkedList<Question>();
         QuestionDAO daol = new QuestionDAO(Connexion.getInstance()); 
         listeQ = daol.findAll();
         Session.setAttribute("listeQ", listeQ);
-        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp");        
+        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp?actionPage=creerQuestion");        
         r.forward(request, response);
        
     }

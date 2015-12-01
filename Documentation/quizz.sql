@@ -21,7 +21,8 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+create database quizz;
+use quizz;
 --
 -- Structure de la table `cours`
 --
