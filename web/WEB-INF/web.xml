@@ -8,7 +8,7 @@
     <context-param>
         <description>le lien de la base de données</description>
         <param-name>urlBd</param-name>
-        <param-value>jdbc:mysql://localhost/quizz?user=root</param-value>
+        <param-value>jdbc:mysql://localhost/quizz?user=root&amp;password=root</param-value>
     </context-param>
     <servlet>
         <servlet-name>logout</servlet-name>

@@ -9,6 +9,11 @@
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 </head>
+<style>
+    .panel-footer{
+        padding-top: 0px;
+    }
+</style>
 <body>
 
       <div id="footer" class="panel-footer   navbar-fixed-bottom">

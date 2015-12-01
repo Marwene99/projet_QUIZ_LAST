@@ -67,8 +67,6 @@ public class UserDAO extends DAO<User>{
                 c.setIdUser(r.getString("idUser"));
                 c.setMotDePasse(r.getString("motDePasse"));
                 c.setEtat(r.getString("etat"));
-               // c.setNom(r.getString("prenom"));
-               // c.setNom(r.getString("nom"));
                 r.close();
                 stm.close();
                 return c;

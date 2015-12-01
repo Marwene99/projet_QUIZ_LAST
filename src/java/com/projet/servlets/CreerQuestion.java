@@ -49,7 +49,7 @@ public class CreerQuestion extends HttpServlet {
         QuestionDAO daol = new QuestionDAO(Connexion.getInstance()); 
         daol.create(q);
         session.setAttribute("q", q);
-        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp?actionPage=creerQuestion");        
+        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/ListeQuestion");        
         r.forward(request, response);
 } 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -71,12 +71,12 @@
 %>
 
 
-
+    </body>
 
 	<script src="js/jquery-2.1.4"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     
     <jsp:include page="footer.jsp" />
-    </body>
+
 </html>

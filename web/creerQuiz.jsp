@@ -19,8 +19,48 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+    <style>
+.ScrollStyle
+{
+    max-height: 200px;
+    overflow-y: scroll;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+    </style>
+    
     <body>
-<!--           modification -->
+        <h3>apercu du questionnaire </h3>
+            <div class="ScrollStyle" >
+                <div class="col-xs-2">  </div> <!--Garder ce div pour  ke lautre saffiche a droite-->
+                <div class="col-xs-12">Hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world</div>
+            </div> 
+                
+
+         <h1>Formulaire de creation de Quiz</h1>
+        <!-- Search box Start -->
+        
+<form>
+    <div class="well carousel-search hidden-sm">
+        <div class="btn-group"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">Choisir une question<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <%   for(int i= 0;i<lq.size();i++ ){ %>
+                
+                <%=
+                    "<li><a><span class=\"glyphicon glyphicon-star\"></span> "+lq.get(i).getTxtQuestion()+"</a></li>"
+                %>                     
+                 <%
+                    }
+                 %>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <button type="button" id="btnSearch" class="btn btn-primary">Ajouter Au Quiz</button>
+        </div>
+    </div>
+        <hr>
+        <!--           modification -->
                 <h1>Formulaire de creation de question</h1>
 
       <form id="formQuestion " role="form" action="creerquest.do" method="post">      
@@ -36,33 +76,13 @@
                     <input type="hidden" name="action" value="CreerQuestion" />   
         </div>
        </div>
-    </form>
-        <hr>
-         <h1>Formulaire de creation de Quiz</h1>
-        <!-- Search box Start -->
-        
-<form>
-    <div class="well carousel-search hidden-sm">
-        <div class="btn-group"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">Choisir une question<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <%   for(int i= 0;i<lq.size();i++ ){ %>
-                
-                <%=
-                    "<li><a><span class=\"glyphicon glyphicon-star\"></span> "+lq.get(i).getTxtQuestion()+"</a></li>"
-                %>
-                        
-                        
-                        
-                 <%
-                    }
-                 %>
-            </ul>
-        </div>
-        <div class="btn-group">
-            <button type="button" id="btnSearch" class="btn btn-primary">Ajouter Au Quiz</button>
-        </div>
-    </div>
+    </form> 
+
 </form>
-<script src="js/jquery-1.11.1.js"></script>
+           
+            
+    <script src="js/jquery-1.11.1.js">
+
+    </script>
     </body>
 </html>
