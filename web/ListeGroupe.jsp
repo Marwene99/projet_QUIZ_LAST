@@ -29,29 +29,31 @@
            
         %>
         <meta charset="utf-8">
+        
       <div id="conteneur">
-      <table>
-          <tr>
-              <th>numero du cours</th>
-              <th>numero du groupe </th>
-              <th>numero du user </th>
-              <th>Nombre de personnes dans le groupe </th>
-              <th>Moyenne du groupe </th>
-              <th>Ecart-Type </th>
-              <th>Medianne </th>
-          </tr>
-          <h1>la liste des groupes dans le cours </h1>
-          <%
-                  for (int i=0;i<lg.size();i++){
-                    
-                  out.println("<tr><td>"+lg.get(i).getIdCours()+"</td><td>"+lg.get(i).getIdGroupe()+"</td><td>"+lg.get(i).getIdUser()+"</td><td>"+lg.get(i).getTailleMax()
-                  +"</td><td>"+lg.get(i).getMoyenneGroupe()+"</td><td>"+lg.get(i).getEcartType()+"</td><td>"+lg.get(i).getMedianne()+"</td></tr>");
-                  
-                  }
-              out.println("</table>");
-                  
-          
+       <h1>la liste des groupes dans le cours </h1>      
+    <table class="table table-condensed">
+            <thead>
+                     <tr>
+                         <th>numero du cours</th>
+                         <th>numero du groupe </th>
+                         <th>nom de l'enseignant </th>
+                         <th>Nombre d'étudiant </th>
+                         <th>Moyenne du groupe </th>
+                         <th>Ecart-Type </th>
+                        <th>Medianne </th>
+                    </tr>
+            </thead>
+            <tbody>
+                  <%
+                  for (int i=0;i<lg.size();i++){    
+            out.println("<tr><td>"+lg.get(i).getIdCours()+"</td><td>"+lg.get(i).getIdGroupe()+"</td><td>"+lg.get(i).getIdUser()+"</td><td>"+lg.get(i).getTailleMax()
+            +"</td><td>"+lg.get(i).getMoyenneGroupe()+"</td><td>"+lg.get(i).getEcartType()+"</td><td>"+lg.get(i).getMedianne()+"</td></tr>");
+            }
             %>
-       </div>
+   
+            </tbody>
+        </table>
+      </div>
     </body>
 </html>

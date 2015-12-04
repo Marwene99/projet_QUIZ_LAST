@@ -29,20 +29,24 @@
   <body>
       
       <div id="conteneur">
-      <table>
-          <tr>
-              <th>numero du cours</th>
-              <th>numero de l'enseignant</th>
-              
-          </tr>
-          <%
-           
-            for(int i= 0;i<lc.size();i++ ){
-             out.println("<tr><td>"+lc.get(i).getIdCours()+"</td><td>"+lc.get(i).getIdProf()+"</td><td><a href='consulterG.do?action=consulterUnGroupe&idCours="+lc.get(i).getIdCours()+"' class=\"btn btn-info\" >Consulter les groupes</a></td></tr>");
-            }
+      <table class="table table-condensed">
+    <thead>
+      <tr>
+           <th>numero du cours</th>
+           <th>numero de l'enseignant</th>
+      </tr>
+    </thead>
+    <tbody>
+        <%
+          for(int i= 0;i<lc.size();i++ ){
+          out.println("<tr><td>"+lc.get(i).getIdCours()+"</td><td>"
+          +lc.get(i).getIdProf()+"</td><td><a href='consulterG.do?action=consulterUnGroupe&idCours="+lc.get(i).getIdCours()+"' class=\"btn btn-info\" >Consulter les groupes</a></td></tr>");
+          }
             
-          %>
-      </table>    
+        %>
+    </tbody>
+  </table>
+      
       </div>
 
 <script src="js/jquery-2.1.4.js"></script>

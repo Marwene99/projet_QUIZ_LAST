@@ -17,7 +17,8 @@
           
       %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link href="css/cacher_footer.css" rel="stylesheet">
+        <title>Crée votre quiz</title>
     </head>
     <style>
 .ScrollStyle
@@ -31,13 +32,14 @@
     </style>
     
     <body>
+        <div id='conteneur1'>
         <h3>apercu du questionnaire </h3>
             <div class="ScrollStyle" >
                 <div class="col-xs-2">  </div> <!--Garder ce div pour  ke lautre saffiche a droite-->
                 <div class="col-xs-12">Hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world</div>
             </div> 
-                
-
+        </div>        
+        <div id='conteneur2'>
          <h1>Formulaire de creation de Quiz</h1>
         <!-- Search box Start -->
         
@@ -59,26 +61,26 @@
             <button type="button" id="btnSearch" class="btn btn-primary">Ajouter Au Quiz</button>
         </div>
     </div>
-        <hr>
-        <!--           modification -->
+</form>
+<hr>
+</div>
+        <!--           modification -->  
                 <h1>Formulaire de creation de question</h1>
-
-      <form id="formQuestion " role="form" action="creerquest.do" method="post">      
-          <div class="row row-offcanvas row-offcanvas-center">
-            <div class="col-xs-6 col-sm-3">  <!--ce div permet de reduit la longeur du input-->
+<div id='conteneur3'>  
+      <form class='form-box' role="form" action="creerquest.do" method="post">      
+<!--          <div class="row row-offcanvas row-offcanvas-center">-->
+            <div class="col-xs-6 col-sm-6">  <!--ce div permet de reduit la longeur du input-->
                     <label for="Question" class="col-md-12 control-label">Question:</label>
                     <input name="Question" type="Question" class="form-control"  placeholder="Question">
-                    
                     <label for="Reponse" class="col-md-12 control-label">Reponse:</label>
                     <input name="Reponse" type="Reponse" class="form-control"  placeholder="Reponse">
-                    
                     <button type="submit" class="btn">Cree cette Question</button>
                     <input type="hidden" name="action" value="CreerQuestion" />   
         </div>
-       </div>
+<!--       </div>-->
     </form> 
+</div>
 
-</form>
            
             
     <script src="js/jquery-1.11.1.js">
