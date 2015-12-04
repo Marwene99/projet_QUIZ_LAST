@@ -34,7 +34,9 @@ public class login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+      
         String  u = request.getParameter("idUser"), p = request.getParameter("motDePasse");
+
         if (u==null || u.trim().equalsIgnoreCase(""))
         {
             //Utilisateur inexistant
@@ -73,8 +75,10 @@ public class login extends HttpServlet {
         else
         {
             //connexion OK
+            String etat = user.getEtat();
             HttpSession session = request.getSession(true);
             session.setAttribute("connecte", u);
+            session.setAttribute("etat", etat);
             RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp");
             r.forward(request, response);
         }
