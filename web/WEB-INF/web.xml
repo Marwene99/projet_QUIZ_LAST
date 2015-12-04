@@ -38,6 +38,10 @@
         <servlet-name>ListeQuestion</servlet-name>
         <servlet-class>com.projet.servlets.ListeQuestion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AjouterQuestionQuizz</servlet-name>
+        <servlet-class>com.projet.servlets.AjouterQuestionQuizz</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -66,11 +70,14 @@
         <servlet-name>ListeQuestion</servlet-name>
         <url-pattern>/ListeQuestion</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AjouterQuestionQuizz</servlet-name>
+        <url-pattern>/AjouterQuestionQuizz</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
 </web-app>
-
 <!-- ajout de la servlet listequesitoN? -->

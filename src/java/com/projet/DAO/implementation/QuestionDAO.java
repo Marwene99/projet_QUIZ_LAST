@@ -164,6 +164,30 @@ public class QuestionDAO extends DAO<Question>{
 		}
 		return liste;
 		}
+        public Question findQuestionbyId ( String Id) {
+         Question c =new Question();
+           
+         try 
+		{
+			Statement stm = cnx.createStatement(); 
+			ResultSet r = stm.executeQuery("SELECT * FROM question where IdQuestion="+Id);
+			if (r != null)
+			{
+				c.setIdQuestion(r.getString("idQuestion"));
+                                c.setTxtQuestion(r.getString("Question"));
+                                c.setReponse(r.getString("Reponse"));
+                                
+				
+			}
+			r.close();
+			stm.close();
+		}
+		catch (SQLException exp)
+		{
+		}
+		return c;
+		}
+         
 
 
 

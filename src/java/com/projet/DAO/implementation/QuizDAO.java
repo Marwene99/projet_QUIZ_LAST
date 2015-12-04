@@ -14,6 +14,8 @@ public class QuizDAO extends DAO<Quiz>{
 		super(c);
 	}
 
+   
+
 	@Override
 	public boolean create(Quiz x) {
 		String req = "INSERT INTO quizz (`IdQuizz` , `idQuestion` , `IdUser,IdCours,nombreEssais,nombreFautes`) "+

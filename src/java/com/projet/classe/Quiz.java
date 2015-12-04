@@ -27,6 +27,7 @@ public class Quiz
 
 
 	}
+        public Quiz(){}
 
 
     public String getId() {

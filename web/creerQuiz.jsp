@@ -13,7 +13,11 @@
     <head>
          <%
             List<Question> lq = new LinkedList<Question>();
-            lq = (List<Question>)session.getAttribute("listeQ");   
+            lq = (List<Question>)session.getAttribute("listeQ");
+            
+            List<Question> listeQuestionChoisi = new LinkedList<Question>();
+            
+            
           
       %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -36,7 +40,13 @@
         <h3>apercu du questionnaire </h3>
             <div class="ScrollStyle" >
                 <div class="col-xs-2">  </div> <!--Garder ce div pour  ke lautre saffiche a droite-->
-                <div class="col-xs-12">Hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world<br/>hi world</div>
+             <!--  liste des question choisies !-->
+             <%
+             for (int i=0 ; i<listeQuestionChoisi.size();i++){
+             
+//               listeQuestionChoisi.get(i).getTxtQuestion() } on verra l'affichage des questions 
+             }
+             %>
             </div> 
         </div>        
         <div id='conteneur2'>
@@ -65,6 +75,16 @@
 <hr>
 </div>
         <!--           modification -->  
+ <script>
+ $(".dropdown-menu li a").click(function(){
+  var selText = $(this).text();
+  $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+});
+
+$("#btnSearch").click(function(){
+	alert($('.btn-select').text()+", "+$('.btn-select2').text());
+})        
+</script>
                 <h1>Formulaire de creation de question</h1>
 <div id='conteneur3'>  
       <form class='form-box' role="form" action="creerquest.do" method="post">      
@@ -83,8 +103,8 @@
 
            
             
-    <script src="js/jquery-1.11.1.js">
-
+    <script src="js/jquery-2.1.4.min.js">
+   
     </script>
     </body>
 </html>
