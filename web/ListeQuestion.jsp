@@ -16,6 +16,7 @@
       <%
             List<Question> lq = new LinkedList<Question>();
             lq = (List<Question>)session.getAttribute("listeQ");
+
             
              
           
