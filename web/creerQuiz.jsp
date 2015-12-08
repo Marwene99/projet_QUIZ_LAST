@@ -12,13 +12,14 @@
 <html>
     <head>
          <%
+             
             List<Question> lq = new LinkedList<Question>();
+            List<Question> listeQuestionChoisi = new LinkedList<Question>();
+            if (request.getSession() !=null){
             lq = (List<Question>)session.getAttribute("listeQ");
             
-            List<Question> listeQuestionChoisi = new LinkedList<Question>();
-            
-            
-          
+            }
+             
       %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/cacher_footer.css" rel="stylesheet">
@@ -34,6 +35,13 @@
 }
 
     </style>
+    <script>
+    if MaFonction() {
+        
+var liste2 =document.getElementById("selection");
+        
+    }
+    </script>
     
     <body>
         <div id='conteneur1'>
@@ -53,10 +61,10 @@
          <h1>Formulaire de creation de Quiz</h1>
         <!-- Search box Start -->
         
-<form>
+<form id="form1">
     <div class="well carousel-search hidden-sm">
         <div class="btn-group"> <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">Choisir une question<span class="caret"></span></a>
-            <ul class="dropdown-menu">
+            <ul  id="selection" class="dropdown-menu">
                 <%   for(int i= 0;i<lq.size();i++ ){ %>
                 
                 <%=
@@ -68,23 +76,13 @@
             </ul>
         </div>
         <div class="btn-group">
-            <button type="button" id="btnSearch" class="btn btn-primary">Ajouter Au Quiz</button>
+            <button type="button" id="btnSearch" class="btn btn-primary" onClick="MaFonction();">Ajouter Au Quiz</button>
         </div>
     </div>
 </form>
 <hr>
 </div>
         <!--           modification -->  
- <script>
- $(".dropdown-menu li a").click(function(){
-  var selText = $(this).text();
-  $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
-});
-
-$("#btnSearch").click(function(){
-	alert($('.btn-select').text()+", "+$('.btn-select2').text());
-})        
-</script>
                 <h1>Formulaire de creation de question</h1>
 <div id='conteneur3'>  
       <form class='form-box' role="form" action="creerquest.do" method="post">      
@@ -97,9 +95,21 @@ $("#btnSearch").click(function(){
                     <button type="submit" class="btn">Cree cette Question</button>
                     <input type="hidden" name="action" value="CreerQuestion" />   
         </div>
+                 <script>
+ $(".dropdown-menu li a").click(function(){
+  var selText = $(this).text();
+  $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+});
+
+$("#btnSearch").click(function(){
+	alert($('.btn-select').text()+", "+$('.btn-select2').text());
+})        
+</script>
+
 <!--       </div>-->
     </form> 
 </div>
+
 
            
             
