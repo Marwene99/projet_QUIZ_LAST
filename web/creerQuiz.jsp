@@ -10,6 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+        <script src="js/jquery-2.1.4.min.js"> </script>
     <head>
          <%
              
@@ -35,27 +36,18 @@
 }
 
     </style>
-    <script>
-    if MaFonction() {
-        
-var liste2 =document.getElementById("selection");
-        
-    }
-    </script>
     
     <body>
         <div id='conteneur1'>
         <h3>apercu du questionnaire </h3>
-            <div class="ScrollStyle" >
+            <div class="questions" >
+                
+                
+            </div>    
                 <div class="col-xs-2">  </div> <!--Garder ce div pour  ke lautre saffiche a droite-->
              <!--  liste des question choisies !-->
-             <%
-             for (int i=0 ; i<listeQuestionChoisi.size();i++){
-             
-//               listeQuestionChoisi.get(i).getTxtQuestion() } on verra l'affichage des questions 
-             }
-             %>
-            </div> 
+            
+           
         </div>        
         <div id='conteneur2'>
          <h1>Formulaire de creation de Quiz</h1>
@@ -95,7 +87,7 @@ var liste2 =document.getElementById("selection");
                     <button type="submit" class="btn">Cree cette Question</button>
                     <input type="hidden" name="action" value="CreerQuestion" />   
         </div>
-                 <script>
+<script>
  $(".dropdown-menu li a").click(function(){
   var selText = $(this).text();
   $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
@@ -105,6 +97,16 @@ $("#btnSearch").click(function(){
 	alert($('.btn-select').text()+", "+$('.btn-select2').text());
 })        
 </script>
+<script>
+ function MaFonction() { 
+var liste2 =document.getElementById("selection");
+var question=document.getElementById("questions");
+question===liste2.options[liste2.selectedIndex].value; 
+ }
+ function selectionner(){
+ var liste3 = document.getElementbyId("selection");  
+ }
+</script>
 
 <!--       </div>-->
     </form> 
@@ -113,8 +115,8 @@ $("#btnSearch").click(function(){
 
            
             
-    <script src="js/jquery-2.1.4.min.js">
+
    
-    </script>
+    
     </body>
 </html>
