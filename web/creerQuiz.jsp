@@ -15,7 +15,8 @@
          <%
              
             List<Question> lq = new LinkedList<Question>();
-            List<Question> listeQuestionChoisi = new LinkedList<Question>();
+            List<String> listeQuestionChoisi = new LinkedList<String>();
+            String s1 ; 
             if (request.getSession() !=null){
             lq = (List<Question>)session.getAttribute("listeQ");
             
@@ -34,23 +35,36 @@
     padding-bottom: 0px;
     padding-top: 0px;
 }
+#question {
+ overflow-y: scroll;
+}
 
     </style>
     
     <body>
         <div id='conteneur1'>
         <h3>apercu du questionnaire </h3>
-            <div class="questions" >
-                
-                
-            </div>    
+        <div class="question" id="question"  >
+           
+            
                 <div class="col-xs-2">  </div> <!--Garder ce div pour  ke lautre saffiche a droite-->
              <!--  liste des question choisies !-->
+             <%/* for (int i=0;i<listeQuestionChoisi.size();i++) {
+                 out.println("<li>");
+                 out.print(listeQuestionChoisi.get(i).toString());
+                 out.println("</li><button>retirer<button><br>");
+             }*/
+            %>
+             
+             
+        </div>    
+             
             
            
         </div>        
         <div id='conteneur2'>
-         <h1>Formulaire de creation de Quiz</h1>
+         <h1 >Formulaire de creation de Quiz</h1>
+         
         <!-- Search box Start -->
         
 <form id="form1">
@@ -68,7 +82,7 @@
             </ul>
         </div>
         <div class="btn-group">
-            <button type="button" id="btnSearch" class="btn btn-primary" onClick="MaFonction();">Ajouter Au Quiz</button>
+            <button type="button" id="btnSearch" class="btn btn-primary" >Ajouter Au Quiz</button>
         </div>
     </div>
 </form>
@@ -90,33 +104,24 @@
 <script>
  $(".dropdown-menu li a").click(function(){
   var selText = $(this).text();
-  $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+  $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span  id="selection" class="caret"></span>');
 });
-
 $("#btnSearch").click(function(){
-	alert($('.btn-select').text()+", "+$('.btn-select2').text());
-})        
-</script>
-<script>
- function MaFonction() { 
-var liste2 =document.getElementById("selection");
-var question=document.getElementById("questions");
-question===liste2.options[liste2.selectedIndex].value; 
- }
- function selectionner(){
- var liste3 = document.getElementbyId("selection");  
- }
-</script>
+//    var temp = document.getElementById("a").text;
+//	//$("#a").html($('.btn-select').text());
+//        alert("all"+ temp);
+//        temp += "\n"+ $('.btn-select').text();
+    var temp = document.getElementById("question");
+	//$("#a").html($('.btn-select').text());
+        //alert("all "+ temp.html() );
+        temp.innerHTML += "<br>"+ $('.btn-select').text();
+        alert("check la rep "+temp.text);
 
+
+});
+</script>
 <!--       </div>-->
     </form> 
 </div>
-
-
-           
-            
-
-   
-    
-    </body>
+</body>
 </html>
